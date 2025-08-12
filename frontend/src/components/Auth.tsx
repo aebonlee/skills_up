@@ -52,7 +52,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
     }
 
     try {
-      const endpoint = isLogin ? '/auth/login' : '/auth/register';
+      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
       const response = await api.post(endpoint, formData);
       
       localStorage.setItem('token', response.data.token);

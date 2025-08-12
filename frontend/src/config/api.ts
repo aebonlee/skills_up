@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-// API 기본 URL 설정 - Skills Up 교육용 플랫폼
-// 버전 1.0.0 - Skills Up 교육용 플랫폼 - 2025.08.12
+// API 기본 URL 설정 - Skills Up 교육용 플랫폼  
+// 버전 1.0.1 - API URL 중복 문제 해결 - 2025.08.12 15:50
 const API_BASE_URL = process.env.REACT_APP_API_URL || 
   (process.env.NODE_ENV === 'production' 
-    ? 'https://skills-up-mkg6.onrender.com/api'
-    : 'http://localhost:5003/api');
+    ? 'https://skills-up-mkg6.onrender.com'
+    : 'http://localhost:5003');
 
 // Axios 인스턴스 생성
 export const api = axios.create({

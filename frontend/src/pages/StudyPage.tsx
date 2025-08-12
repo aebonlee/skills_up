@@ -52,7 +52,7 @@ const StudyPage: React.FC = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await api.get('/study-records');
+      const response = await api.get('/api/study-records');
       setRecords(response.data);
     } catch (error) {
       console.error('학습 기록을 불러오는데 실패했습니다:', error);
@@ -61,7 +61,7 @@ const StudyPage: React.FC = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await api.get('/stats/study');
+      const response = await api.get('/api/stats/study');
       setStats(response.data);
     } catch (error) {
       console.error('통계를 불러오는데 실패했습니다:', error);
@@ -80,7 +80,7 @@ const StudyPage: React.FC = () => {
     setMessage('');
 
     try {
-      await api.post('/study-records', {
+      await api.post('/api/study-records', {
         ...formData,
         minutes: parseInt(formData.minutes)
       });

@@ -55,7 +55,7 @@ const ReadingPage: React.FC = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await api.get('/reading-records');
+      const response = await api.get('/api/reading-records');
       setRecords(response.data);
     } catch (error) {
       console.error('독서 기록을 불러오는데 실패했습니다:', error);
@@ -64,7 +64,7 @@ const ReadingPage: React.FC = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await api.get('/stats/reading');
+      const response = await api.get('/api/stats/reading');
       setStats(response.data);
     } catch (error) {
       console.error('독서 통계를 불러오는데 실패했습니다:', error);
@@ -83,7 +83,7 @@ const ReadingPage: React.FC = () => {
     setMessage('');
 
     try {
-      await api.post('/reading-records', formData);
+      await api.post('/api/reading-records', formData);
       
       setMessage('독서 기록이 저장되었습니다.');
       setFormData({
