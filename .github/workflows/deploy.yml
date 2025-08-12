@@ -33,12 +33,11 @@ jobs:
     - name: Build with production API URL
       run: |
         cd frontend
-        export REACT_APP_API_URL="https://stepup-cloud-backend.onrender.com"
+        export REACT_APP_API_URL="https://stepup-cloud-uh79.onrender.com"
         npm run build
         
-    - name: Add custom domain and 404 handling
+    - name: Add 404 handling for SPA
       run: |
-        echo "aebonlee.github.io" > ./frontend/build/CNAME
         cp ./frontend/build/index.html ./frontend/build/404.html
         
     - name: Copy to docs folder for GitHub Pages
