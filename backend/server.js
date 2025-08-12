@@ -2,97 +2,57 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const helmet = require('helmet');
-const morgan = require('morgan');
-const rateLimit = require('express-rate-limit');
 const { db, initializeDatabase } = require('./database');
 
 const app = express();
 const PORT = process.env.PORT || 5003;
-const JWT_SECRET = process.env.JWT_SECRET || 'skills-up-secret-key-2024';
-const isProduction = process.env.NODE_ENV === 'production';
+const JWT_SECRET = process.env.JWT_SECRET || 'skills-up-secret-key-2025';
 
-// 보안 미들웨어
-app.use(helmet({
-  crossOriginEmbedderPolicy: false,
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'"],
-      imgSrc: ["'self'", "data:", "https:"],
-    },
-  },
-}));
-
-// Rate limiting (프로덕션에서만)
-if (isProduction) {
-  const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15분
-    max: 100, // IP당 최대 100회 요청
-    message: '요청이 너무 많습니다. 잠시 후 다시 시도해주세요.',
-    standardHeaders: true,
-    legacyHeaders: false,
-  });
-  app.use('/api/', limiter);
-}
-
-// 로깅 미들웨어
-app.use(morgan(isProduction ? 'combined' : 'dev'));
-
-// CORS 설정 - Skills Up 프로덕션/개발 환경 지원
+// CORS 설정 - Skills Up 교육용 플랫폼 - 업데이트 2025.08.12
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:3001', 
   'http://localhost:3002',
   'http://localhost:3003',
   'https://aebonlee.github.io',
-  'https://skills-up-mkg6.onrender.com',
   process.env.FRONTEND_URL || 'https://aebonlee.github.io'
 ];
 
 app.use(cors({
   origin: function(origin, callback) {
-    if (!isProduction) console.log('🔍 Incoming request from origin:', origin);
+    console.log('🔍 Incoming request from origin:', origin);
     
     // 개발 환경에서는 모든 origin 허용
     if (!origin) {
-      if (!isProduction) console.log('✅ No origin (development/testing) allowed');
+      console.log('✅ No origin (development/testing) allowed');
       callback(null, true);
       return;
     }
     
     // 허용된 도메인 목록에 있는 경우
     if (allowedOrigins.includes(origin)) {
-      if (!isProduction) console.log('✅ Origin in allowed list:', origin);
+      console.log('✅ Origin in allowed list:', origin);
       callback(null, true);
       return;
     }
     
     // GitHub Pages 도메인 체크 (aebonlee.github.io 및 서브 경로)
     if (origin.includes('aebonlee.github.io')) {
-      if (!isProduction) console.log('✅ GitHub Pages origin allowed:', origin);
+      console.log('✅ GitHub Pages origin allowed:', origin);
       callback(null, true);
       return;
     }
     
-    // Render 도메인 체크 (*.onrender.com)
+    // Render 도메인 체크 (*.onrender.com) - Render 전용
     if (origin.includes('.onrender.com')) {
-      if (!isProduction) console.log('✅ Render domain allowed:', origin);
-      callback(null, true);
-      return;
-    }
-    
-    // Vercel 도메인 체크 (*.vercel.app)
-    if (origin.includes('.vercel.app')) {
-      if (!isProduction) console.log('✅ Vercel domain allowed:', origin);
+      console.log('✅ Render domain allowed:', origin);
       callback(null, true);
       return;
     }
     
     // localhost 개발 환경 체크
     if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
-      if (!isProduction) console.log('✅ Localhost development allowed:', origin);
+      console.log('✅ Localhost development allowed:', origin);
       callback(null, true);
       return;
     }
@@ -109,13 +69,11 @@ app.use(cors({
 
 app.use(express.json({ limit: '10mb' }));
 
-// 추가 요청 로깅 (개발 환경에서만)
-if (!isProduction) {
-  app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
-    next();
-  });
-}
+// 요청 로깅 미들웨어
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  next();
+});
 
 // 데이터베이스 초기화
 initializeDatabase();
@@ -324,21 +282,8 @@ app.get('/api/stats/reading', authenticateToken, (req, res) => {
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'OK', 
-    service: 'Skills Up API',
-    message: 'Skills Up API 서버가 정상 작동 중입니다.',
-    timestamp: new Date().toISOString(),
-    version: '1.0.0',
-    environment: process.env.NODE_ENV || 'development'
-  });
-});
-
-// 루트 경로 응답
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Skills Up API Server',
-    version: '1.0.0',
-    docs: '/api/health',
-    status: 'running'
+    message: '스텝업클라우드 API 서버가 정상 작동 중입니다.',
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -370,11 +315,10 @@ process.on('SIGINT', () => {
 });
 
 const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Skills Up API 서버가 포트 ${PORT}에서 실행 중입니다.`);
+  console.log(`🚀 스텝업클라우드 API 서버가 포트 ${PORT}에서 실행 중입니다.`);
   console.log(`📊 헬스 체크: http://localhost:${PORT}/api/health`);
   console.log(`🗄️  데이터베이스: ${process.env.DATABASE_URL ? 'PostgreSQL' : 'SQLite'} 연결됨`);
   console.log(`🌍 환경: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`🔗 CORS 설정: ${allowedOrigins.join(', ')}`);
 });
 
 server.on('error', (err) => {
