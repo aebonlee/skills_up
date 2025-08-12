@@ -41,7 +41,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL || ""}>
       <div className="min-h-screen bg-gradient-to-br from-sky-pastel-50 via-cream-50 to-mint-pastel-50">
         <Navigation user={user} onLogout={handleLogout} />
         

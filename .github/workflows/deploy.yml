@@ -43,6 +43,7 @@ jobs:
       env:
         REACT_APP_API_URL: "https://skills-up-mkg6.onrender.com/api"
         CI: false
+        PUBLIC_URL: "/skills_up"
         
     - name: Add 404 handling for SPA
       run: |
