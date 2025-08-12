@@ -83,7 +83,7 @@ build/
 out/
 
 # React production build
-/docs
+# /docs - Allow docs for GitHub Pages deployment
 
 # Server logs
 server.log
