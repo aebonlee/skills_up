@@ -63,11 +63,11 @@ function App() {
                   <span className="text-white text-sm">📚</span>
                 </div>
                 <span className="text-lg font-bold bg-gradient-to-r from-sky-pastel-600 to-mint-pastel-600 bg-clip-text text-transparent">
-                  스텝업클라우드
+                  Skills Up
                 </span>
               </div>
-              <p className="text-sm">© 2024 스텝업클라우드. 모든 권리 보유.</p>
-              <p className="text-xs mt-2 text-gray-500">학습 성장을 위한 협력형 학습관리 서비스</p>
+              <p className="text-sm">© 2024 Skills Up. 모든 권리 보유.</p>
+              <p className="text-xs mt-2 text-gray-500">학습 성장을 위한 교육용 학습관리 플랫폼</p>
               <div className="flex items-center justify-center space-x-4 mt-4 text-xs text-gray-400">
                 <span>✨ Made with React & Tailwind</span>
                 <span>•</span>
