@@ -72,6 +72,9 @@ app.use(express.json({ limit: '10mb' }));
 // 요청 로깅 미들웨어
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
+  console.log('Headers:', JSON.stringify(req.headers, null, 2));
+  console.log('Origin:', req.headers.origin);
+  console.log('User-Agent:', req.headers['user-agent']);
   next();
 });
 
@@ -275,6 +278,29 @@ app.get('/api/stats/reading', authenticateToken, (req, res) => {
   })
   .catch(err => {
     res.status(500).json({ error: '독서 통계를 불러올 수 없습니다.' });
+  });
+});
+
+// 루트 경로 엔드포인트
+app.get('/', (req, res) => {
+  res.json({ 
+    name: 'Skills Up API Server',
+    version: '1.0.0',
+    message: 'API 서버가 정상 작동 중입니다.',
+    endpoints: [
+      'GET /api/health',
+      'POST /api/auth/login',
+      'POST /api/auth/register',
+      'GET /api/study-records',
+      'POST /api/study-records',
+      'GET /api/reading-records',
+      'POST /api/reading-records',
+      'GET /api/awards-activities',
+      'POST /api/awards-activities',
+      'GET /api/stats/study',
+      'GET /api/stats/reading'
+    ],
+    timestamp: new Date().toISOString()
   });
 });
 
