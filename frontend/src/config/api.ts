@@ -4,8 +4,8 @@ import axios from 'axios';
 // 버전 1.0.0 - Skills Up 교육용 플랫폼 - 2025.08.12
 const API_BASE_URL = process.env.REACT_APP_API_URL || 
   (process.env.NODE_ENV === 'production' 
-    ? 'https://skills-up-mkg6.onrender.com'
-    : 'http://localhost:5003');
+    ? 'https://skills-up-mkg6.onrender.com/api'
+    : 'http://localhost:5003/api');
 
 // Axios 인스턴스 생성
 export const api = axios.create({

@@ -52,7 +52,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
     }
 
     try {
-      const endpoint = isLogin ? '/api/auth/login' : '/api/auth/register';
+      const endpoint = isLogin ? '/auth/login' : '/auth/register';
       const response = await api.post(endpoint, formData);
       
       localStorage.setItem('token', response.data.token);
@@ -80,9 +80,9 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
             <span className="text-2xl">📚</span>
           </div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-sky-pastel-600 to-mint-pastel-600 bg-clip-text text-transparent mb-2">
-            스텝업클라우드
+            Skills Up
           </h1>
-          <p className="text-gray-600">학습 성장을 위한 협력형 학습관리 서비스</p>
+          <p className="text-gray-600">학습 성장을 위한 교육용 학습관리 플랫폼</p>
         </div>
 
         <div className="mb-6 bg-gradient-to-r from-cream-50 to-sky-pastel-50 p-4 rounded-xl border border-cream-200/50">
@@ -203,7 +203,7 @@ const Auth: React.FC<AuthProps> = ({ onLogin }) => {
           <div className="flex items-center justify-center space-x-2 text-sm text-gray-500">
             <span>✨</span>
             <span className="bg-gradient-to-r from-sky-pastel-500 to-mint-pastel-500 bg-clip-text text-transparent font-medium">
-              스텝업클라우드
+              Skills Up
             </span>
             <span>✨</span>
           </div>
