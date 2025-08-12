@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Connection Test</title>
+</head>
+<body>
+    <h1>Skills Up API Test</h1>
+    <button onclick="testHealthAPI()">Test Health API</button>
+    <button onclick="testLoginAPI()">Test Login API</button>
+    <div id="result"></div>
+
+    <script>
+        const API_URL = 'https://stepup-cloud-uh79.onrender.com';
+        
+        async function testHealthAPI() {
+            const result = document.getElementById('result');
+            result.innerHTML = 'Testing Health API...';
+            
+            try {
+                const response = await fetch(`${API_URL}/api/health`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+                
+                const data = await response.json();
+                result.innerHTML = `<h3>Health API Test:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                result.innerHTML = `<h3>Health API Error:</h3><pre>${error.message}</pre>`;
+                console.error('Health API Error:', error);
+            }
+        }
+        
+        async function testLoginAPI() {
+            const result = document.getElementById('result');
+            result.innerHTML = 'Testing Login API...';
+            
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'test@sample.com',
+                        password: '1234'
+                    })
+                });
+                
+                const data = await response.json();
+                result.innerHTML = `<h3>Login API Test:</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+            } catch (error) {
+                result.innerHTML = `<h3>Login API Error:</h3><pre>${error.message}</pre>`;
+                console.error('Login API Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
