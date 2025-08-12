@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/skills_up/static/css/main.45fac6ac.css",
+    "main.js": "/skills_up/static/js/main.44815094.js",
+    "static/js/453.670e15c7.chunk.js": "/skills_up/static/js/453.670e15c7.chunk.js",
+    "index.html": "/skills_up/index.html",
+    "main.45fac6ac.css.map": "/skills_up/static/css/main.45fac6ac.css.map",
+    "main.44815094.js.map": "/skills_up/static/js/main.44815094.js.map",
+    "453.670e15c7.chunk.js.map": "/skills_up/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.45fac6ac.css",
+    "static/js/main.44815094.js"
+  ]
+}
