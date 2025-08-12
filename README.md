@@ -1,6 +1,5 @@
 # 🚀 Skills Up Learning Platform
-
-[![Deploy Status](https://github.com/aebonlee/skills_up/actions/workflows/deploy.yml/badge.svg)](https://github.com/aebonlee/skills_up/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/aebonlee/stepup-cloud/actions/workflows/deploy.yml/badge.svg)](https://github.com/aebonlee/stepup-cloud/actions/workflows/deploy.yml)
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
