@@ -52,9 +52,9 @@ const DashboardPage: React.FC = () => {
   const fetchAllStats = async () => {
     try {
       const [studyResponse, readingResponse, activitiesResponse] = await Promise.all([
-        api.get('/api/stats/study'),
-        api.get('/api/stats/reading'),
-        api.get('/api/awards-activities')
+        api.get('/stats/study'),
+        api.get('/stats/reading'),
+        api.get('/awards-activities')
       ]);
 
       setStudyStats(studyResponse.data);

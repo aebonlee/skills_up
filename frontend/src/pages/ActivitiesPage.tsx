@@ -53,7 +53,7 @@ const ActivitiesPage: React.FC = () => {
 
   const fetchActivities = async () => {
     try {
-      const response = await api.get('/api/awards-activities');
+      const response = await api.get('/awards-activities');
       setActivities(response.data);
     } catch (error) {
       console.error('활동/입상 기록을 불러오는데 실패했습니다:', error);
@@ -72,7 +72,7 @@ const ActivitiesPage: React.FC = () => {
     setMessage('');
 
     try {
-      await api.post('/api/awards-activities', {
+      await api.post('/awards-activities', {
         ...formData,
         hours: formData.hours ? parseInt(formData.hours) : null
       });
