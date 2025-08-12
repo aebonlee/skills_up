@@ -1,6 +1,7 @@
 {
-  "name": "stepup-cloud-backend",
+  "name": "skills-up-backend",
   "version": "1.0.0",
+  "description": "Skills Up Learning Platform Backend API",
   "main": "server.js",
   "engines": {
     "node": ">=18.0.0",
@@ -9,24 +10,29 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "build": "echo 'No build step required'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo 'No build step required for Node.js'",
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "lint": "echo 'Linting skipped for now'",
+    "db:migrate": "node database.js"
   },
   "keywords": [
-    "stepup",
-    "cloud",
-    "study",
-    "reading",
-    "tracker"
+    "skills",
+    "up",
+    "learning",
+    "api",
+    "backend",
+    "education"
   ],
-  "author": "StepUp Cloud Team",
-  "license": "ISC",
-  "description": "StepUp Cloud Backend API Server",
+  "author": "Skills Up Team",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
     "sqlite3": "^5.1.7"

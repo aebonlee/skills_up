@@ -1,13 +1,18 @@
-# 🚀 스킬스업 (Skills Up)
+# 🚀 Skills Up Learning Platform
 
 [![Deploy to GitHub Pages](https://github.com/aebonlee/skills_up/actions/workflows/deploy.yml/badge.svg)](https://github.com/aebonlee/skills_up/actions/workflows/deploy.yml)
-[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9-blue.svg)](https://www.typescriptlang.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-18-green.svg)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![Render](https://img.shields.io/badge/Backend-Render-46E3B7.svg)](https://render.com/)
 
-학생의 학습 루틴, 독서, 활동 등의 데이터를 기록·시각화하여, 학부모와 함께 자기주도 학습의 방향을 설계하고 성장을 지원하는 협력형 학습관리 서비스입니다. (Backend : Render Cloud - 업데이트 2025.01.12)
+학생의 학습 루틴, 독서, 활동 등의 데이터를 기록·시각화하여, 학부모와 함께 자기주도 학습의 방향을 설계하고 성장을 지원하는 **협력형 학습관리 플랫폼**입니다.
 
-🌐 **[라이브 데모 보기](https://aebonlee.github.io/skills_up)**
+## 🌐 Live Demo
+
+- **🎨 Frontend**: [https://aebonlee.github.io/skills_up](https://aebonlee.github.io/skills_up)
+- **🔧 Backend API**: [https://skills-up-mkg6.onrender.com](https://skills-up-mkg6.onrender.com)
+- **📊 Health Check**: [https://skills-up-mkg6.onrender.com/api/health](https://skills-up-mkg6.onrender.com/api/health)
 
 ## 🎯 주요 기능
 

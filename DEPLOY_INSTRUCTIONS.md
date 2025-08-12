@@ -1,33 +1,37 @@
-# 🚀 스텝업클라우드 GitHub 배포 완료 가이드
+# 🚀 Skills Up GitHub 배포 완료 가이드
 
 ## ✅ 현재 준비 상황
-- ✅ Git 저장소 초기화 완료
-- ✅ 모든 소스코드 커밋 완료 (2개 커밋)
-- ✅ GitHub 사용자명 `aebonlee`로 모든 설정 완료
-- ✅ GitHub Pages 자동 배포 설정 완료
-- ✅ 완전한 문서화 완료
+- ✅ Skills Up 프로젝트 재구성 완료
+- ✅ Render 백엔드 배포 설정 완료
+- ✅ GitHub Actions CI/CD 파이프라인 구성 완료
+- ✅ 프로덕션 환경 최적화 완료
+- ✅ API 연결 설정 완료
 
-## 📋 GitHub 저장소 생성 및 배포 단계
+## 📋 배포 단계
 
-### 1단계: GitHub에서 새 저장소 생성
-1. **https://github.com/aebonlee** 접속
-2. **"New" 또는 "New repository" 버튼 클릭**
-3. **저장소 정보 입력:**
-   - Repository name: `stepup-cloud`
-   - Description: `📚 학습 성장을 위한 협력형 학습관리 서비스 - React + Node.js 풀스택 웹앱`
-   - **Public** 선택 (GitHub Pages 무료 사용)
-   - ❌ Add a README file (체크 해제)
-   - ❌ Add .gitignore (체크 해제) 
-   - ❌ Choose a license (체크 해제)
-4. **"Create repository" 클릭**
+### 1단계: GitHub 리포지토리 확인
+**기존 저장소 사용**: https://github.com/aebonlee/skills_up
+- Repository name: `skills_up`
+- Description: `📚 Skills Up Learning Platform - React + Node.js 학습관리 시스템`
 
-### 2단계: 로컬에서 GitHub에 푸시
+### 2단계: Render 백엔드 서비스 연결
+1. **Render 대시보드** 접속: https://render.com
+2. **New Web Service** 생성
+3. **GitHub 연결**: `aebonlee/skills_up` 선택
+4. **서비스 설정**:
+   - Name: `skills-up-backend`
+   - Build Command: `cd backend && npm install`
+   - Start Command: `cd backend && npm start`
+
+### 3단계: 로컬 변경사항 푸시
 ```bash
 # 현재 위치에서 실행
-cd "C:\Users\ASUS\stepup-cloud"
+cd "C:\Users\ASUS\skills_up"
 
-# GitHub에 푸시 (원격 저장소는 이미 연결됨)
-git push -u origin main
+# 변경사항 커밋 및 푸시
+git add .
+git commit -m "feat: 프로덕션 배포 최적화 및 Render 연결 설정"
+git push origin main
 ```
 
 ### 3단계: GitHub Pages 활성화
@@ -39,7 +43,8 @@ git push -u origin main
 ### 4단계: 자동 배포 확인 및 완료
 1. **"Actions" 탭**에서 배포 진행상황 확인
 2. 녹색 체크마크가 뜨면 배포 완료
-3. **🌐 라이브 사이트**: https://aebonlee.github.io/stepup-cloud
+3. **🌐 라이브 사이트**: https://aebonlee.github.io/skills_up
+4. **🔧 백엔드 API**: https://skills-up-mkg6.onrender.com
 
 ## 🎯 배포 후 최종 결과
 
@@ -52,11 +57,12 @@ git push -u origin main
 - **🎨 반응형 디자인** - 모든 기기 지원
 
 ### 🛠 기술적 특징
-- **Frontend**: React 18 + TypeScript + Tailwind CSS
-- **Backend**: Node.js + Express + SQLite
+- **Frontend**: React 19 + TypeScript + Tailwind CSS
+- **Backend**: Node.js + Express + SQLite/PostgreSQL
+- **Security**: Helmet, Rate Limiting, CORS 보안 강화
 - **Charts**: Chart.js 인터랙티브 시각화
-- **Deployment**: GitHub Actions 자동 배포
-- **Responsive**: 모바일/태블릿/데스크톱 완벽 지원
+- **Deployment**: GitHub Actions + Render 자동 배포
+- **Database**: 개발(SQLite) → 프로덕션(PostgreSQL) 자동 전환
 
 ### 📈 GitHub 저장소 특징
 - **완전한 문서화**: README, 개발가이드, 라이센스

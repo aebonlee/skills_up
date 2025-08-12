@@ -1,4 +1,4 @@
-name: Deploy Frontend to GitHub Pages and Backend to Render
+name: Deploy Skills Up Platform
 
 on:
   push:
@@ -33,8 +33,10 @@ jobs:
     - name: Build with production API URL
       run: |
         cd frontend
-        export REACT_APP_API_URL="https://stepup-cloud-uh79.onrender.com"
         npm run build
+      env:
+        REACT_APP_API_URL: "https://skills-up-mkg6.onrender.com/api"
+        CI: false
         
     - name: Add 404 handling for SPA
       run: |

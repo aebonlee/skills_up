@@ -1,27 +1,31 @@
 services:
   - type: web
-    name: stepup-cloud-backend
+    name: skills-up-backend
     runtime: node
     plan: free
-    region: oregon  # 더 안정적인 리전 선택
-    buildCommand: cd backend && npm install
+    region: oregon
+    buildCommand: cd backend && npm install && npm run build
     startCommand: cd backend && npm start
     healthCheckPath: /api/health
-    autoDeploy: true  # GitHub 푸시 시 자동 배포
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
         value: 10000
       - key: JWT_SECRET
-        value: stepup-cloud-super-secret-jwt-key-2024-very-long-random-string-for-security
+        generateValue: true  # Render가 자동으로 안전한 시크릿 생성
+      - key: FRONTEND_URL
+        value: https://aebonlee.github.io
+      - key: LOG_LEVEL
+        value: info
       - key: DATABASE_URL
         fromDatabase:
-          name: stepup-cloud-db
+          name: skills-up-db
           property: connectionString
 
 databases:
-  - name: stepup-cloud-db
-    databaseName: stepup_cloud
+  - name: skills-up-db
+    databaseName: skills_up
     plan: free
     region: oregon
