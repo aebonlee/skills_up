@@ -30,6 +30,12 @@ jobs:
         cd frontend
         npm ci
         
+    - name: Run tests (optional)
+      run: |
+        cd frontend
+        npm test -- --coverage --watchAll=false --passWithNoTests
+      continue-on-error: true
+        
     - name: Build with production API URL
       run: |
         cd frontend
